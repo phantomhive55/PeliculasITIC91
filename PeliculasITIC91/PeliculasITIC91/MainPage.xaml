@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="PeliculasITIC91.MainPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Agregar"  Icon="create.png" Clicked="OnAddPelicula" />
+        <ToolbarItem Text="Actualizar" Icon="read.png" Clicked="OnRefresh"/>
+
+    </ContentPage.ToolbarItems>
+
+    <ListView ItemsSource="{Binding}" IsPullToRefreshEnabled="True" x:Name="recarga">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell Text="{Binding Titulo}" TextColor="Black" Detail="{Binding }" DetailColor="Gray">
+                    <TextCell.ContextActions>
+                        <MenuItem CommandParameter="{Binding}"  Icon="update.png"  Text="Editar"  IsDestructive="True" Clicked="OnUpdatePelicula" />
+                        <MenuItem CommandParameter="{Binding}"  Icon="delete.png"  Text="Eliminar" IsDestructive="True" Clicked="OnDeletePelicula"/>
+                    </TextCell.ContextActions>
+                </TextCell>
+
+
+
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+</ContentPage>
